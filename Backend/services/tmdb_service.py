@@ -33,18 +33,18 @@ class TMDBService:
 
         response = requests.get(url, headers=self.headers)
         response = json.loads(response.text)
-        return response.get("results", [])[:10]
+        return response.get("results", [])
     
     def get_now_playing_movies(self):
         url = "https://api.themoviedb.org/3/movie/now_playing"
 
         response = requests.get(url, headers=self.headers)
         response = json.loads(response.text)
-        return response.get("results", [])[:10]
+        return response.get("results", [])
     
     def get_popular_movies(self):
         url = "https://api.themoviedb.org/3/movie/popular"
 
         response = requests.get(url, headers=self.headers)
         response = json.loads(response.text)
-        return response.get("results", [])[:10]
+        return response.get("results", [])
