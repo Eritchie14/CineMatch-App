@@ -45,11 +45,14 @@ async def get_now_playing_movies():
 async def get_popular_movies():
     return tmdb_service.get_popular_movies()
 
-# @app.get("/movies/{movie_id}")
-# async def get_movie_details(movie_id: int):
-#     return tmdb_service.get_movie_details(movie_id)
-
 @app.get("/movies/classic")
 async def get_classic_movies():
     return tmdb_service.get_classic_movies()
 
+@app.get("/movies/{movie_id}/credits")
+async def get_movie_cast_and_crew(movie_id: int):
+    return tmdb_service.get_movie_cast_and_crew(movie_id)
+
+# @app.get("/movies/search/{movie_id}")
+# async def get_movie_details(movie_id: int):
+#     return tmdb_service.get_movie_details(movie_id)

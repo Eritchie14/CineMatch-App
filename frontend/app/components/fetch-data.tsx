@@ -30,3 +30,9 @@ export async function FetchClassicMovieData() {
   const movies = await data.json()
   return movies;
 }
+
+export async function FetchMovieCastAndCrew(movieId: number) {
+  const data = await fetch(`http://127.0.0.1:8000/movies/${movieId}/credits`)
+  const castAndCrew = await data.json()
+  return castAndCrew
+}

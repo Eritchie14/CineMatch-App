@@ -72,3 +72,30 @@ class TMDBService:
         response = requests.get(url, headers=self.headers)
         response = json.loads(response.text)
         return response.get("results", [])
+    
+    def get_movie_cast_and_crew(self, movie_id):
+        url = f"https://api.themoviedb.org/3/movie/{movie_id}/credits"
+        response = requests.get(url, headers=self.headers)
+        response = json.loads(response.text) 
+        top_cast = [
+        {
+            "name": actor["name"],
+            "role": actor["character"]
+        }
+        for actor in response["cast"][:3]
+        ]
+        director_data = next(
+            (crew for crew in response["crew"] if crew["job"] == "Director"),
+            None
+        )
+        director = (
+            {
+                "name": director_data["name"]
+            }
+            if director_data
+            else None
+        )
+        return {
+            "cast": top_cast,
+            "director": director
+        }

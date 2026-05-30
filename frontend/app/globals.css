@@ -26,7 +26,7 @@ body {
 } */
 
 /* CineMatch color theme*/
-
+/* @import "tailwindcss"; */
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -76,6 +76,25 @@ body {
   font-family: var(--sans);
 }
 
+html {
+  scrollbar-color: #a1a1aa transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #a1a1aa;
+  border: 0.25rem solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+
 h1,
 h2,
 h3 {
@@ -87,6 +106,28 @@ a {
   color: var(--accent);
 }
 
+.recommendation-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-left: 20px;
+}
+
+.recommendation-area p {
+  margin: 0;
+}
+
+.recommendation-area button {
+  border: 1px solid var(--accent-border);
+  border-radius: 0.5rem;
+  background: var(--accent-bg);
+  color: var(--accent);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 650;
+  padding: 0.5rem 0.85rem;
+}
+
 
 
 .movie-row {
@@ -95,7 +136,8 @@ a {
   box-sizing: border-box;
   gap: 1rem;
   overflow-x: auto;
-  padding: 0 1rem 1rem;
+  margin: -0.75rem 0;
+  padding: 0.75rem 1rem 1.25rem;
   scrollbar-color: #a1a1aa transparent;
 }
 
@@ -116,14 +158,12 @@ a {
 
 .movie-card {
   display: flex;
-  flex: 0 0 9rem;
+  flex: 0 0 12rem;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid #e4e4e7;
   border-radius: 0.5rem;
   background: #fafafa;
-  box-shadow:
-    0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .movie-poster {
@@ -135,6 +175,11 @@ a {
   background: #e4e4e7;
   color: #71717a;
   font-size: 0.875rem;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  border: 2px solid var(--accent);
 }
 
 .movie-card-body {
@@ -168,3 +213,26 @@ a {
   }
 }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: #18181b;
+  color: white;
+  padding: 24px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.modal button {
+  float: right;
+  cursor: pointer;
+}
