@@ -24,3 +24,9 @@ export async function FetchNowPlayingMovieData() {
   const movies = await data.json()
   return movies;
 }
+
+export async function FetchClassicMovieData() {
+  const data = await fetch('http://127.0.0.1:8000/movies/classic')
+  const movies = await data.json()
+  return movies;
+}

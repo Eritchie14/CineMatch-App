@@ -43,8 +43,32 @@ class TMDBService:
         return response.get("results", [])
     
     def get_popular_movies(self):
-        url = "https://api.themoviedb.org/3/movie/popular"
-
+        url = url = (
+                    "https://api.themoviedb.org/3/discover/movie"
+                    "?sort_by=popularity.desc"
+                    "&vote_count.gte=500"
+                    "&include_adult=false"
+                    "&language=en-US"
+                    "&with_original_language=en"
+                    "&page=1"
+                )
+        response = requests.get(url, headers=self.headers)
+        response = json.loads(response.text)
+        return response.get("results", [])
+    
+    def get_classic_movies(self):
+        url = (
+                "https://api.themoviedb.org/3/discover/movie"
+                "?release_date.gte=1980-01-01"
+                "&release_date.lte=2011-12-31"
+                "&vote_count.gte=1500"
+                "&vote_average.gte=8.0"
+                "&vote_average.lte=10.0"
+                "&sort_by=vote_average.desc"
+                "&include_adult=false"
+                "&language=en-US"
+                "&page=2"
+            )
         response = requests.get(url, headers=self.headers)
         response = json.loads(response.text)
         return response.get("results", [])
