@@ -1,5 +1,6 @@
 import { FetchTopMovieData, FetchPopularMovieData, FetchNowPlayingMovieData, FetchClassicMovieData } from "./components/fetch-data";
 import MovieRow from "./components/MovieRow";
+import Link from 'next/link'
 //import {useState} from 'react';
 
 type Movie = {
@@ -39,7 +40,9 @@ export default async function Home() {
             CineMatch is your go-to app for discovering movies you&apos;ll love.</p>
           <div className="recommendation-area">
             <p>Get a personalized movie recommendation here</p>
-            <button type="button">Get Recommendation</button>
+            <Link href="/RecPage">
+              <button type="button">Get Recommendation</button>
+            </Link>
           </div>
           <p>
           </p>
