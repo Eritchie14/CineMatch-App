@@ -36,3 +36,9 @@ export async function FetchMovieCastAndCrew(movieId: number) {
   const castAndCrew = await data.json()
   return castAndCrew
 }
+
+export async function FetchGenres() {
+  const data = await fetch('http://127.0.0.1:8000/genres')
+  const genres = await data.json()
+  return genres;
+}

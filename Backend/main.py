@@ -53,6 +53,10 @@ async def get_classic_movies():
 async def get_movie_cast_and_crew(movie_id: int):
     return tmdb_service.get_movie_cast_and_crew(movie_id)
 
+@app.get("/genres")
+async def get_genres():
+    return tmdb_service.get_genres()
+
 # @app.get("/movies/search/{movie_id}")
 # async def get_movie_details(movie_id: int):
 #     return tmdb_service.get_movie_details(movie_id)
