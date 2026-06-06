@@ -1,4 +1,5 @@
 import {FetchGenres} from "../components/fetch-data";
+import './RecPage.css'
 
 type Genre = {
   id: number;
@@ -20,9 +21,9 @@ export default async function Home() {
         Get recommended BITCH!
       </p>
 
-      <div>
+      <div className="genre-grid">
       {genres.map((genre) => (
-        <div key={genre.id}>
+        <div key={genre.id} className="genre-card">
           <h3>{genre.name}</h3>
         </div>
       ))}
