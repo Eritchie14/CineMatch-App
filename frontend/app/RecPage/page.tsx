@@ -1,5 +1,7 @@
 import {FetchGenres} from "../components/fetch-data";
 import './RecPage.css'
+import GenreGrid from "../components/genre-grid";
+import Link from 'next/link'
 
 type Genre = {
   id: number;
@@ -15,19 +17,18 @@ export default async function Home() {
 
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
 
+      <Link href = "/">
+        <button className="home-button">
+          Go to Home
+        </button>
+      </Link>
 
       <h1 className="text-3xl font-bold mb-4">Recommendations</h1>
       <p className="text-lg text-gray-600 dark:text-gray-400">
-        Get recommended BITCH!
+        Get a custom recommendation based on your favorite genres and movies! Start by selecting some genres below.
       </p>
 
-      <div className="genre-grid">
-      {genres.map((genre) => (
-        <div key={genre.id} className="genre-card">
-          <h3>{genre.name}</h3>
-        </div>
-      ))}
-  </div>
+      <GenreGrid genres={genres} />
 
 
     </div>
