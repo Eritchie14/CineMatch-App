@@ -99,3 +99,9 @@ class TMDBService:
             "cast": top_cast,
             "director": director
         }
+    
+    def get_genres(self):
+        url = "https://api.themoviedb.org/3/genre/movie/list"
+        response = requests.get(url, headers=self.headers)
+        response = json.loads(response.text)
+        return response.get("genres", [])
